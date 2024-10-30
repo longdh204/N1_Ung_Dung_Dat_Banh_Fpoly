@@ -16,7 +16,7 @@
         android:textStyle="bold"
         android:textSize="25dp"
         android:textColor="@color/white"
-        android:text="My Project Do Hoang Long"
+        android:text="My Project N1"
         />
 
     <TextView
