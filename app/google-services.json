@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "956584114457",
+    "project_id": "ung-dung-dat-60a70",
+    "storage_bucket": "ung-dung-dat-60a70.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:956584114457:android:39ff3447c094d96c7dad88",
+        "android_client_info": {
+          "package_name": "com.example.dat_banh_fpoly"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8nVDUzl3qp5EqYBV7DPBClQ4CMg77DWY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
