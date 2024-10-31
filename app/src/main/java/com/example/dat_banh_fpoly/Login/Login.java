@@ -15,8 +15,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.dat_banh_fpoly.IntroActivity;
-import com.example.dat_banh_fpoly.MainActivity;
+import com.example.dat_banh_fpoly.Activity.IntroActivity;
 import com.example.dat_banh_fpoly.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

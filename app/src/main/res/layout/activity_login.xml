@@ -68,7 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_marginTop="20dp"
-        android:background="#4575CF"
+        android:background="@drawable/brown_bg"
         android:text="Đăng nhập"
         android:textColor="#FFFFFF"
         android:textSize="15dp"

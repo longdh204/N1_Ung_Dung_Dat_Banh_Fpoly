@@ -1,13 +1,11 @@
-package com.example.dat_banh_fpoly;
+package com.example.dat_banh_fpoly.Activity;
 
 import android.os.Bundle;
 import android.view.WindowManager;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import com.example.dat_banh_fpoly.R;
 
 public class BaseActivity extends AppCompatActivity {
 
