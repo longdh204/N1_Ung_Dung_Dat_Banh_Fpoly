@@ -15,6 +15,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.dat_banh_fpoly.IntroActivity;
 import com.example.dat_banh_fpoly.MainActivity;
 import com.example.dat_banh_fpoly.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -83,7 +84,7 @@ public class Login extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(Login.this, "Đăng nhập thành công ", Toast.LENGTH_SHORT).show();
                                     // Note: Update the Home activity path according to your new package structure
-                                    Intent intent = new Intent(Login.this, MainActivity.class);
+                                    Intent intent = new Intent(Login.this, IntroActivity.class);
                                     startActivity(intent);
                                     finish();
                                 } else {

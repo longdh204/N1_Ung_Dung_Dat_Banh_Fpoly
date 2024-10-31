@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Dat_Banh_Fpoly</string>
+    <string name="intro_text"><font color="#000000">Your Cravings with Our</font>">\n<font color="#854811">Fresh Cakes, Donuts</font>\n<font color="#000000">and </font><font color="#854811">Pastries</font></string>
+    <string name="intro_subtitle">Browse the best edibles from top seller \nGet personalized recommendations \nEnjoy fast, free shipping</string>
+    <string name="intro_signin">Well come to <font color="#854811">Dat Banh Ngot Fpoly</font></string>
 </resources>
