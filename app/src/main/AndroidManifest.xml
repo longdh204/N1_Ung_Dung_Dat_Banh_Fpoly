@@ -14,7 +14,7 @@
 
         <!-- Login Activity: màn hình khởi động đầu tiên -->
         <activity
-            android:name=".Login.Login"
+            android:name=".Activity.IntroActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +24,7 @@
 
         <!-- Intro Activity -->
         <activity
-            android:name=".Activity.IntroActivity"
+            android:name=".Login.Login"
             android:exported="false" />
 
         <!-- Main Activity -->

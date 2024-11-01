@@ -6,10 +6,12 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 
+import com.example.dat_banh_fpoly.Adapter.CategoryAdapter;
 import com.example.dat_banh_fpoly.Adapter.SliderAdapter;
 import com.example.dat_banh_fpoly.Model.SliderModel;
 import com.example.dat_banh_fpoly.R;
@@ -28,11 +30,29 @@ public class MainActivity extends BaseActivity {
         setContentView(binding.getRoot());
 
         initBanners();
+        //6
+        initCategory();
+
         Window window = getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         View decor = window.getDecorView();
         decor.setSystemUiVisibility(0);
+    }
+
+    private void initCategory() {
+        //1:02:26
+        binding.progressBarCategory.setVisibility(View.VISIBLE);
+
+        viewModel.getCategory().observe(this, items -> {
+            binding.recyclerViewCategory.setLayoutManager(
+                    new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
+  );
+            binding.recyclerViewCategory.setAdapter(new CategoryAdapter(items));
+            binding.progressBarCategory.setVisibility(View.GONE);
+        });
+
+        viewModel.loadCategory();
     }
 
     private void initBanners() {
@@ -52,7 +72,7 @@ public class MainActivity extends BaseActivity {
         binding.viewPager2.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
 
         CompositePageTransformer transformer = new CompositePageTransformer();
-        transformer.addTransformer(new MarginPageTransformer(40));
+        transformer.addTransformer(new MarginPageTransformer(0));
         binding.viewPager2.setPageTransformer(transformer);
 
         if (images.size() > 1) {
