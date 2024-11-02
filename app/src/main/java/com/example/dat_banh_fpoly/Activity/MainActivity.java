@@ -6,11 +6,13 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 
+import com.example.dat_banh_fpoly.Adapter.BestSellerAdapter;
 import com.example.dat_banh_fpoly.Adapter.CategoryAdapter;
 import com.example.dat_banh_fpoly.Adapter.SliderAdapter;
 import com.example.dat_banh_fpoly.Model.SliderModel;
@@ -32,12 +34,25 @@ public class MainActivity extends BaseActivity {
         initBanners();
         //6
         initCategory();
+        //7
+        initBestSeller();
 
         Window window = getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         View decor = window.getDecorView();
         decor.setSystemUiVisibility(0);
+    }
+
+    private void initBestSeller() {
+        binding.progressBarBestSeller.setVisibility(View.VISIBLE);
+
+        viewModel.getBestSeller().observe(this, items -> {
+            binding.recyclerBestSeller.setLayoutManager(new GridLayoutManager(this,2));
+            binding.recyclerBestSeller.setAdapter(new BestSellerAdapter(items));
+            binding.progressBarBestSeller.setVisibility(View.GONE);
+        });
+        viewModel.loadBestSeller();
     }
 
     private void initCategory() {
