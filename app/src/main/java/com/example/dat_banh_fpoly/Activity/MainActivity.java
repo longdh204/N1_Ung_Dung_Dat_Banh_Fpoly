@@ -1,9 +1,11 @@
 package com.example.dat_banh_fpoly.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -15,6 +17,7 @@ import androidx.viewpager2.widget.MarginPageTransformer;
 import com.example.dat_banh_fpoly.Adapter.BestSellerAdapter;
 import com.example.dat_banh_fpoly.Adapter.CategoryAdapter;
 import com.example.dat_banh_fpoly.Adapter.SliderAdapter;
+import com.example.dat_banh_fpoly.Helper.ManagmentCart;
 import com.example.dat_banh_fpoly.Model.SliderModel;
 import com.example.dat_banh_fpoly.R;
 import com.example.dat_banh_fpoly.ViewModel.MainViewModel;
@@ -37,11 +40,25 @@ public class MainActivity extends BaseActivity {
         //7
         initBestSeller();
 
+        bottomNavigation();
+
         Window window = getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         View decor = window.getDecorView();
         decor.setSystemUiVisibility(0);
+    }
+
+    // chuyen man hinh sang trang cart gio hang
+    private void bottomNavigation() {
+        binding.cartBtn.setOnClickListener(view -> {
+            ManagmentCart managmentCart = new ManagmentCart(MainActivity.this);
+            if(!managmentCart.getListCart().isEmpty()){
+                startActivity(new Intent(MainActivity.this,CardActivity.class));
+            }else{
+                Toast.makeText(MainActivity.this,"Your Card is Empty",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void initBestSeller() {

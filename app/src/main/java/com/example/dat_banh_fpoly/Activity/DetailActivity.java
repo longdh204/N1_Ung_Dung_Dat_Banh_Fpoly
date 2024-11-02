@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -75,11 +76,13 @@ public class DetailActivity extends BaseActivity {
             managmentCart.insertItems(item);
         });
         binding.backBtn.setOnClickListener(v -> startActivity(new Intent(DetailActivity.this, MainActivity.class)));
-        binding.cartBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Chưa có xử lý gì khi click vào nút "cartBtn"
+        binding.cartBtn.setOnClickListener(v -> {
+            if(!managmentCart.getListCart().isEmpty()){
+                startActivity(new Intent(DetailActivity.this,CardActivity.class));
+            }else{
+                Toast.makeText(DetailActivity.this,"Your Card is Empty",Toast.LENGTH_SHORT).show();
             }
+
         });
 
         Glide.with(this)
