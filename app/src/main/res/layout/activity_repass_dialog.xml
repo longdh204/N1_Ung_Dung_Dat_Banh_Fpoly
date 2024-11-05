@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:id="@+id/main"
+    tools:context=".Activity.RepassDialog"
+>
+
+    <!-- Nhập mật khẩu cũ -->
+    <EditText
+        android:id="@+id/old_password_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhập mật khẩu hiện tại"
+        android:inputType="textPassword"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/back_dialog"
+        android:padding="20dp"/>
+
+    <!-- Nhập mật khẩu mới -->
+    <EditText
+        android:id="@+id/new_password_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhập mật khẩu mới"
+        android:inputType="textPassword"
+        android:background="@drawable/back_dialog"
+        android:layout_marginBottom="12dp"
+        android:padding="20dp"/>
+
+    <!-- Nhập lại mật khẩu mới -->
+    <EditText
+        android:id="@+id/confirm_new_password_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhập lại mật khẩu mới"
+        android:background="@drawable/back_dialog"
+        android:padding="20dp"
+        android:inputType="textPassword" />
+
+</LinearLayout>

@@ -13,13 +13,19 @@
         android:theme="@style/Theme.Dat_Banh_Fpoly"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.RepassDialog"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.CardActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.DetailActivity"
             android:exported="false" /> <!-- Login Activity: màn hình khởi động đầu tiên -->
         <activity
-            android:name=".Activity.IntroActivity"
+            android:name=".Login.Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +34,7 @@
             </intent-filter>
         </activity> <!-- Intro Activity -->
         <activity
-            android:name=".Login.Login"
+            android:name=".Activity.IntroActivity"
             android:exported="false" /> <!-- Main Activity -->
         <activity
             android:name=".Activity.MainActivity"
