@@ -66,6 +66,13 @@ public class MainActivity extends BaseActivity {
                 startActivity(intent);
             }
         });
+        binding.myorderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, OrderHistoryActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initBestSeller() {

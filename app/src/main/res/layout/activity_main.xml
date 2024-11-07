@@ -333,6 +333,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/favoriteBtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.2"
@@ -356,6 +357,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/myorderBtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.2"

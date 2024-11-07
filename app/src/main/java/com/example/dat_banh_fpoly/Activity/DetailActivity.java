@@ -86,7 +86,7 @@ public class DetailActivity extends BaseActivity {
         });
 
         Glide.with(this)
-        .load(item.getSellerPic())
+                .load(item.getSellerPic())
                 .apply(new RequestOptions().transform(new CenterCrop()))
                 .into(binding.picSeller);
 

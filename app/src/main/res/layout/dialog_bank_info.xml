@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/edtBankName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tên ngân hàng" />
+
+    <EditText
+        android:id="@+id/edtAccountNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Số tài khoản" />
+
+    <EditText
+        android:id="@+id/edtCardExpiry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ngày hết hạn (MM/YY)" />
+
+    <EditText
+        android:id="@+id/edtCVV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="CVV" />
+</LinearLayout>
