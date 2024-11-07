@@ -17,6 +17,7 @@ import com.example.dat_banh_fpoly.Adapter.PicListAdapter;
 import com.example.dat_banh_fpoly.Adapter.WeightAdapter;
 import com.example.dat_banh_fpoly.Helper.ManagmentCart;
 import com.example.dat_banh_fpoly.Model.IteamsModel;
+import com.example.dat_banh_fpoly.R;
 import com.example.dat_banh_fpoly.databinding.ActivityDetailBinding;
 
 import java.util.ArrayList;
@@ -26,6 +27,9 @@ public class DetailActivity extends BaseActivity {
     private IteamsModel item; // no usages
     private int numberOrder = 1; // no usages
     private ManagmentCart managmentCart; // 1 usage
+    // Tạo biến để lưu trạng thái yêu thích
+    private boolean isFavorited = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +47,31 @@ public class DetailActivity extends BaseActivity {
         // Đặt hệ thống thanh trạng thái sáng để chữ và biểu tượng dễ đọc hơn
         View decor = window.getDecorView();
         decor.setSystemUiVisibility(0);
+
+        // Thiết lập sự kiện nhấn cho favBtn
+        binding.favBtn.setOnClickListener(v -> {
+            isFavorited = !isFavorited; // Thay đổi trạng thái
+            updateFavIcon(); // Cập nhật icon
+        });
+    }
+    // Hàm cập nhật icon
+    private void updateFavIcon() {
+        if (isFavorited) {
+            binding.favBtn.setImageResource(R.drawable.fav_icon3); // Icon khi đã yêu thích
+            binding.favBtn.getLayoutParams().width = 130;
+            binding.favBtn.getLayoutParams().height = 130;
+
+            // Thêm mục vào danh sách yêu thích
+            ManagmentCart managmentCart = new ManagmentCart(this);
+            managmentCart.addFavoriteItem(item);
+        } else {
+            binding.favBtn.setImageResource(R.drawable.fav_icon); // Icon mặc định
+
+            // Xóa mục khỏi danh sách yêu thích
+            ManagmentCart managmentCart = new ManagmentCart(this);
+            managmentCart.removeFavoriteItem(item);
+        }
+        binding.favBtn.requestLayout(); // Yêu cầu cập nhật lại bố cục
     }
 
     private void initLists() {

@@ -2,6 +2,8 @@ package com.example.dat_banh_fpoly.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -18,11 +20,13 @@ import com.example.dat_banh_fpoly.Adapter.BestSellerAdapter;
 import com.example.dat_banh_fpoly.Adapter.CategoryAdapter;
 import com.example.dat_banh_fpoly.Adapter.SliderAdapter;
 import com.example.dat_banh_fpoly.Helper.ManagmentCart;
+import com.example.dat_banh_fpoly.Model.IteamsModel;
 import com.example.dat_banh_fpoly.Model.SliderModel;
 import com.example.dat_banh_fpoly.R;
 import com.example.dat_banh_fpoly.ViewModel.MainViewModel;
 import com.example.dat_banh_fpoly.databinding.ActivityMainBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends BaseActivity {
@@ -47,7 +51,36 @@ public class MainActivity extends BaseActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         View decor = window.getDecorView();
         decor.setSystemUiVisibility(0);
+
+        binding.TimKiem.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                searchItemsByName(s.toString()); // Gọi hàm tìm kiếm khi có thay đổi
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+
     }
+    private void searchItemsByName(String query) {
+        viewModel.getBestSeller().observe(this, items -> {
+            List<IteamsModel> filteredItems = new ArrayList<>();
+            for (IteamsModel item : items) {
+                if (item.getTitle().toLowerCase().contains(query.toLowerCase())) {
+                    filteredItems.add(item);
+                }
+            }
+
+            // Cập nhật RecyclerView với danh sách đã lọc
+            binding.recyclerBestSeller.setAdapter(new BestSellerAdapter(filteredItems));
+        });
+    }
+
+
 
     // chuyen man hinh sang trang cart gio hang
     private void bottomNavigation() {
@@ -70,6 +103,13 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, OrderHistoryActivity.class);
+                startActivity(intent);
+            }
+        });
+        binding.favoriteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, FavoriteActivity.class);
                 startActivity(intent);
             }
         });

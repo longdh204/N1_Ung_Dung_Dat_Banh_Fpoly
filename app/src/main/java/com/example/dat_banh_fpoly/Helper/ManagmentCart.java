@@ -66,4 +66,22 @@ public class ManagmentCart {
         }
         return fee;
     }
+    public void addFavoriteItem(IteamsModel item) {
+        ArrayList<IteamsModel> favoriteList = getFavoriteList();
+        if (!favoriteList.contains(item)) {
+            favoriteList.add(item);
+            tinyDB.putListObject("FavoriteList", favoriteList);
+        }
+    }
+
+    public void removeFavoriteItem(IteamsModel item) {
+        ArrayList<IteamsModel> favoriteList = getFavoriteList();
+        favoriteList.removeIf(favItem -> favItem.getTitle().equals(item.getTitle())); // Xóa mục có tiêu đề trùng
+        tinyDB.putListObject("FavoriteList", favoriteList);
+    }
+
+    public ArrayList<IteamsModel> getFavoriteList() {
+        return tinyDB.getListObject("FavoriteList");
+    }
+
 }
