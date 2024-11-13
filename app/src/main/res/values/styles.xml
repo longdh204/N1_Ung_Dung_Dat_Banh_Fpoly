@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomAlertDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:backgroundDimAmount">0.5</item>
+        <item name="android:windowMinWidthMajor">90%</item> <!-- Tùy chỉnh chiều rộng của dialog -->
+        <item name="android:windowMinWidthMinor">100%</item>
+        <item name="android:windowBackground">@drawable/dialog_background</item> <!-- Nền tùy chỉnh -->
+    </style>
+</resources>

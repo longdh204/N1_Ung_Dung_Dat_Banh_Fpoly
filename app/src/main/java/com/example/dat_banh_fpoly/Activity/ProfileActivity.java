@@ -85,11 +85,14 @@ public class ProfileActivity extends AppCompatActivity {
             View dialogView = inflater.inflate(R.layout.activity_repass_dialog, null);
             builder.setView(dialogView);
 
+            AlertDialog dialog = builder.create(); // Tạo AlertDialog từ builder
+
             EditText oldPasswordInput = dialogView.findViewById(R.id.old_password_input);
             EditText newPasswordInput = dialogView.findViewById(R.id.new_password_input);
             EditText confirmNewPasswordInput = dialogView.findViewById(R.id.confirm_new_password_input);
 
-            builder.setPositiveButton("Đổi mật khẩu", (dialog, which) -> {
+            // Xử lý nút "Repass" (Đổi mật khẩu)
+            dialogView.findViewById(R.id.Repass).setOnClickListener(v -> {
                 String oldPassword = oldPasswordInput.getText().toString();
                 String newPassword = newPasswordInput.getText().toString();
                 String confirmNewPassword = confirmNewPasswordInput.getText().toString();
@@ -111,6 +114,7 @@ public class ProfileActivity extends AppCompatActivity {
                         user.updatePassword(newPassword).addOnCompleteListener(updateTask -> {
                             if (updateTask.isSuccessful()) {
                                 Toast.makeText(getApplicationContext(), "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
+                                dialog.dismiss(); // Đóng dialog sau khi đổi mật khẩu thành công
                             } else {
                                 Toast.makeText(getApplicationContext(), "Đổi mật khẩu thất bại", Toast.LENGTH_SHORT).show();
                             }
@@ -121,10 +125,13 @@ public class ProfileActivity extends AppCompatActivity {
                 });
             });
 
-            builder.setNegativeButton("Hủy", (dialog, which) -> dialog.cancel());
-            builder.show();
+            // Xử lý nút "Cancel" (Hủy)
+            dialogView.findViewById(R.id.cancel).setOnClickListener(v -> dialog.dismiss());
+
+            dialog.show(); // Hiển thị dialog
         } else {
             Toast.makeText(getApplicationContext(), "Không có người dùng đăng nhập", Toast.LENGTH_SHORT).show();
         }
     }
+
 }

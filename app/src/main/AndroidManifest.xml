@@ -31,7 +31,7 @@
             android:name=".Activity.DetailActivity"
             android:exported="false" /> <!-- Login Activity: màn hình khởi động đầu tiên -->
         <activity
-            android:name=".Login.Login"
+            android:name=".Activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,7 +43,7 @@
             android:name=".Activity.IntroActivity"
             android:exported="false" /> <!-- Main Activity -->
         <activity
-            android:name=".Activity.MainActivity"
+            android:name=".Login.Login"
             android:exported="false" /> <!-- Các Activity khác -->
         <activity
             android:name=".Activity.BaseActivity"

@@ -83,5 +83,4 @@ public class ManagmentCart {
     public ArrayList<IteamsModel> getFavoriteList() {
         return tinyDB.getListObject("FavoriteList");
     }
-
 }

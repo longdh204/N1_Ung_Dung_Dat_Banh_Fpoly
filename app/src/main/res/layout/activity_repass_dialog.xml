@@ -7,7 +7,14 @@
     android:id="@+id/main"
     tools:context=".Activity.RepassDialog"
 >
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RePass"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="@color/brown"
+        android:layout_marginBottom="30dp"/>
     <!-- Nhập mật khẩu cũ -->
     <EditText
         android:id="@+id/old_password_input"
@@ -16,8 +23,8 @@
         android:hint="Nhập mật khẩu hiện tại"
         android:inputType="textPassword"
         android:layout_marginBottom="12dp"
-        android:background="@drawable/back_dialog"
-        android:padding="20dp"/>
+        android:padding="20dp"
+        android:background="@drawable/border_background"/>
 
     <!-- Nhập mật khẩu mới -->
     <EditText
@@ -26,8 +33,7 @@
         android:layout_height="wrap_content"
         android:hint="Nhập mật khẩu mới"
         android:inputType="textPassword"
-        android:background="@drawable/back_dialog"
-        android:layout_marginBottom="12dp"
+        android:background="@drawable/border_background"        android:layout_marginBottom="12dp"
         android:padding="20dp"/>
 
     <!-- Nhập lại mật khẩu mới -->
@@ -36,8 +42,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nhập lại mật khẩu mới"
-        android:background="@drawable/back_dialog"
-        android:padding="20dp"
+        android:background="@drawable/border_background"        android:padding="20dp"
         android:inputType="textPassword" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/cancel"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:background="@color/red"
+            android:text="Cancel"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/Repass"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:text="Repass"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/white"/>
+    </LinearLayout>
 </LinearLayout>

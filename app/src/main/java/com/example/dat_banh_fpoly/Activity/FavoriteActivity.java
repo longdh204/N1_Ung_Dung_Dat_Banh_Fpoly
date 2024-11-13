@@ -1,8 +1,11 @@
 package com.example.dat_banh_fpoly.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,6 +34,17 @@ public class FavoriteActivity extends AppCompatActivity {
 
         favoriteAdapter = new BestSellerAdapter(favoriteList);
         favoriteRecyclerView.setAdapter(favoriteAdapter);
+        // hiển thị recycler dưới dạng 2 hàng
+        RecyclerView recyclerView = findViewById(R.id.favoriteRecyclerView);
+        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        recyclerView.setAdapter(favoriteAdapter);
+        findViewById(R.id.backBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FavoriteActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
 

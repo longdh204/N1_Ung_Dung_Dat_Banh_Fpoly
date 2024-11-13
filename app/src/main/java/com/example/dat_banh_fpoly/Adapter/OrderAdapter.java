@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dat_banh_fpoly.Model.OrderModel;
@@ -31,8 +32,13 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     @Override
     public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
         OrderModel order = orderList.get(position);
-        holder.orderDate.setText("Order Date : "+order.getOrderDate());
+        holder.orderDate.setText("Order Date : " + order.getOrderDate());
         holder.totalAmount.setText("Total Amount : $" + order.getTotalAmount());
+
+        // Thiết lập ProductAdapter cho danh sách sản phẩm của đơn hàng này
+        ProductAdapter productAdapter = new ProductAdapter(order.getListCart());
+        holder.recyclerViewProductList.setLayoutManager(new LinearLayoutManager(holder.itemView.getContext()));
+        holder.recyclerViewProductList.setAdapter(productAdapter);
     }
 
     @Override
@@ -42,11 +48,13 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
 
     static class OrderViewHolder extends RecyclerView.ViewHolder {
         TextView orderDate, totalAmount;
+        RecyclerView recyclerViewProductList;
 
         public OrderViewHolder(@NonNull View itemView) {
             super(itemView);
             orderDate = itemView.findViewById(R.id.orderDate);
             totalAmount = itemView.findViewById(R.id.totalAmount);
+            recyclerViewProductList = itemView.findViewById(R.id.recyclerViewProductList);
         }
     }
 }

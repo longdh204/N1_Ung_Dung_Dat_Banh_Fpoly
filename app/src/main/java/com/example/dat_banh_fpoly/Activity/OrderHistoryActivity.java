@@ -11,10 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dat_banh_fpoly.Adapter.OrderAdapter;
-import com.example.dat_banh_fpoly.Helper.ManagmentCart;
 import com.example.dat_banh_fpoly.Model.OrderModel;
 import com.example.dat_banh_fpoly.R;
-import com.example.dat_banh_fpoly.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -29,7 +27,6 @@ public class OrderHistoryActivity extends AppCompatActivity {
     private List<OrderModel> orderList;
     private FirebaseFirestore db;
     private String userId;
-    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,18 +44,14 @@ public class OrderHistoryActivity extends AppCompatActivity {
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         loadOrderHistory();
+
         // Xử lý nút "Back to Main"
-        findViewById(R.id.backhistory).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Quay về Activity chính
-                Intent intent = new Intent(OrderHistoryActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        findViewById(R.id.backhistory).setOnClickListener(v -> {
+            Intent intent = new Intent(OrderHistoryActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
         });
     }
-
 
     private void loadOrderHistory() {
         db.collection("orders")
@@ -69,7 +62,13 @@ public class OrderHistoryActivity extends AppCompatActivity {
                         orderList.clear();
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             OrderModel order = document.toObject(OrderModel.class);
-                            orderList.add(order);
+
+                            // Kiểm tra dữ liệu sản phẩm trong listCart
+                            if (order.getListCart() != null && !order.getListCart().isEmpty()) {
+                                orderList.add(order);
+                            } else {
+                                Toast.makeText(this, "Đơn hàng không có sản phẩm.", Toast.LENGTH_SHORT).show();
+                            }
                         }
                         orderAdapter.notifyDataSetChanged();
                     } else {

@@ -3,29 +3,143 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/white">
 
-    <EditText
-        android:id="@+id/edtBankName"
+    <!-- Chế độ thử nghiệm -->
+    <TextView
+        android:id="@+id/tvTestMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TEST MODE"
+        android:backgroundTint="@color/yellow"
+        android:padding="8dp"
+        android:textColor="@color/black"
+        android:background="@drawable/rounded_background_yellow" />
+
+    <!-- Tiêu đề -->
+    <TextView
+        android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Tên ngân hàng" />
+        android:text="Add your payment information"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black" />
 
-    <EditText
-        android:id="@+id/edtAccountNumber"
+    <!-- Thông tin thẻ -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Số tài khoản" />
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_marginTop="16dp">
 
-    <EditText
-        android:id="@+id/edtCardExpiry"
+        <EditText
+            android:id="@+id/edtBankName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name Bank"
+            android:inputType="text"
+            android:drawableEnd="@drawable/back"
+            android:layout_margin="3dp"
+            android:background="@drawable/border_background"/>
+        <EditText
+            android:id="@+id/edtAccountNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Number Acount"
+            android:inputType="number"
+            android:drawableEnd="@drawable/back"
+            android:layout_margin="3dp"
+            android:background="@drawable/border_background"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <EditText
+                android:id="@+id/edtCardExpiry"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="MM / YY"
+                android:inputType="number"
+                android:layout_margin="3dp"
+                android:background="@drawable/border_background"/>
+
+            <EditText
+                android:id="@+id/edtCVV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="CVC"
+                android:inputType="numberPassword"
+                android:layout_margin="3dp"
+                android:background="@drawable/border_background"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Địa chỉ thanh toán -->
+    <TextView
+        android:id="@+id/tvBillingAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Billing address"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black" />
+
+    <Spinner
+        android:id="@+id/spnCountry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ngày hết hạn (MM/YY)" />
+        android:layout_marginTop="8dp"
+        android:background="@drawable/border_background"
+        android:padding="12dp" />
 
     <EditText
-        android:id="@+id/edtCVV"
+        android:id="@+id/edtZipCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="CVV" />
+        android:layout_marginTop="8dp"
+        android:hint="ZIP Code"
+        android:background="@drawable/border_background"
+        android:padding="12dp" />
+
+    <!-- Lưu thông tin thanh toán -->
+    <CheckBox
+        android:id="@+id/chkSavePayment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Save for future Codes Easy payments" />
+
+    <!-- Nút thanh toán -->
+    <Button
+        android:id="@+id/btnPay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Pay"
+        android:textSize="18dp"
+        android:backgroundTint="@color/blue"
+        android:textColor="@color/white"
+        android:drawablePadding="8dp"
+        android:padding="16dp" />
+    <Button
+        android:id="@+id/btnHuy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Cancel"
+        android:textSize="18dp"
+        android:backgroundTint="@color/red"
+        android:textColor="@color/white"
+        android:drawablePadding="8dp"
+        android:padding="16dp" />
+
 </LinearLayout>

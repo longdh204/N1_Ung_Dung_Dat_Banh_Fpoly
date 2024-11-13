@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@drawable/dialog_background"> <!-- Thêm nền tùy chỉnh nếu muốn -->>
+
+    <TextView
+    android:id="@+id/tvTitle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Xác nhận thanh toán"
+    android:textSize="20sp"
+    android:textStyle="bold"
+    android:textColor="@color/black"
+    android:gravity="center"
+    android:paddingBottom="8dp" />
+
+<TextView
+android:id="@+id/tvMessage"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginTop="8dp"
+android:text="Tổng số tiền: $0\n \nBạn có chắc chắn muốn thanh toán không?"
+android:textSize="17sp"
+android:gravity="center"
+    android:textColor="@color/black"
+    android:textStyle="bold"/>
+
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal"
+android:layout_marginTop="24dp"
+android:gravity="end">
+
+<Button
+    android:id="@+id/btnCancel"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Hủy"
+    android:backgroundTint="@color/red"
+    android:textColor="@color/white"
+    android:layout_marginEnd="8dp" />
+
+<Button
+    android:id="@+id/btnConfirm"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Thanh toán"
+    android:backgroundTint="@color/blue"
+    android:textColor="@color/white" />
+</LinearLayout>
+    </LinearLayout>

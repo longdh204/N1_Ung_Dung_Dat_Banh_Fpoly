@@ -26,7 +26,6 @@ public class RepassDialog extends AppCompatActivity {
         if (user != null) {
             // Tạo AlertDialog
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Đổi mật khẩu");
 
             // Inflate giao diện từ layout XML
             LayoutInflater inflater = this.getLayoutInflater();
