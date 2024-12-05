@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <!-- Nền màu xám (Grey 3) -->
+            <solid android:color="#D1A67A" /> <!-- Màu xám -->
+            <corners android:radius="20dp" /> <!-- Bo tròn góc -->
+            <!-- Viền màu hồng đào -->
+            <stroke android:width="8dp" android:color="#CA7E03"/> <!-- Viền màu hồng đào -->
+        </shape>
+    </item>
+</layer-list>

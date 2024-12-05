@@ -37,7 +37,7 @@ public class RepassDialog extends AppCompatActivity {
             EditText newPasswordInput = dialogView.findViewById(R.id.new_password_input);
             EditText confirmNewPasswordInput = dialogView.findViewById(R.id.confirm_new_password_input);
 
-            builder.setPositiveButton("Đổi mật khẩu", (dialog, which) -> {
+            builder.setPositiveButton("", (dialog, which) -> {
                 String oldPassword = oldPasswordInput.getText().toString().trim();
                 String newPassword = newPasswordInput.getText().toString().trim();
                 String confirmNewPassword = confirmNewPasswordInput.getText().toString().trim();

@@ -52,12 +52,23 @@ public class ProfileActivity extends AppCompatActivity {
         findViewById(R.id.back_to_main_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Quay về Activity chính
-                Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
+                // Kiểm tra tài khoản đang sử dụng
+                String currentUserEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+
+                // Nếu tài khoản là admin, quay về màn hình Admin
+                if ("admin123@gmail.com".equals(currentUserEmail)) {
+                    Intent intent = new Intent(ProfileActivity.this, AdminMainActivity.class); // Màn hình Admin
+                    startActivity(intent);
+                } else {
+                    // Nếu không phải admin, quay về màn hình chính
+                    Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
+
+                finish(); // Đảm bảo quay lại đúng màn hình mà không lưu lại trong back stack
             }
         });
+
 
         // Xử lý nút "Logout"
         LinearLayout logoutButton = findViewById(R.id.logout_button);

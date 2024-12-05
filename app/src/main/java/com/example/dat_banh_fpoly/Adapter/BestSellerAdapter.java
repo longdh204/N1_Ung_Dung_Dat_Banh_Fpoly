@@ -21,9 +21,17 @@ import java.util.List;
 public class BestSellerAdapter extends RecyclerView.Adapter<BestSellerAdapter.ViewHolder> {
     private List<IteamsModel> items;
     private Context context;
+    private boolean isFavorite; // Cờ để xác định màn hình
 
-    public BestSellerAdapter(List<IteamsModel> items) {
+    // Constructor khi truyền isFavorite
+    public BestSellerAdapter(List<IteamsModel> items, boolean isFavorite) {
         this.items = items;
+        this.isFavorite = isFavorite; // Lưu giá trị để quyết định hiển thị nút xóa hay không
+    }
+
+    // Constructor mặc định, isFavorite mặc định là false
+    public BestSellerAdapter(List<IteamsModel> items) {
+        this(items, false); // Gọi constructor chính, mặc định 'isFavorite' là false
     }
 
     @NonNull
@@ -31,7 +39,7 @@ public class BestSellerAdapter extends RecyclerView.Adapter<BestSellerAdapter.Vi
     public BestSellerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
         ViewholderBestSellerBinding binding = ViewholderBestSellerBinding.inflate(
-                LayoutInflater.from(context),parent,false
+                LayoutInflater.from(context), parent, false
         );
         return new ViewHolder(binding);
     }
@@ -49,13 +57,22 @@ public class BestSellerAdapter extends RecyclerView.Adapter<BestSellerAdapter.Vi
                 .apply(new RequestOptions().transform(new CenterCrop()))
                 .into(holder.binding.picBestSeller);
 
+        // Chuyển hướng sang màn hình chi tiết khi nhấn vào item
         holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(context, DetailActivity.class);
-
             intent.putExtra("object", item);
-
             context.startActivity(intent);
         });
+
+        // Xử lý hiển thị nút xóa khi ở màn hình Favorite
+        if (isFavorite) {
+            holder.binding.deleteBtn.setVisibility(View.VISIBLE); // Hiển thị nút xóa khi là màn hình Favorite
+            holder.binding.deleteBtn.setOnClickListener(v -> {
+                removeItem(position); // Gọi phương thức xóa item
+            });
+        } else {
+            holder.binding.deleteBtn.setVisibility(View.GONE); // Ẩn nút xóa khi không phải màn hình Favorite
+        }
     }
 
     @Override
@@ -63,12 +80,19 @@ public class BestSellerAdapter extends RecyclerView.Adapter<BestSellerAdapter.Vi
         return items.size();
     }
 
+    // Phương thức xóa item khỏi danh sách hiển thị
+    public void removeItem(int position) {
+        items.remove(position); // Xóa mục khỏi danh sách
+        notifyItemRemoved(position); // Cập nhật giao diện
+        notifyItemRangeChanged(position, items.size()); // Điều chỉnh các item còn lại
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         ViewholderBestSellerBinding binding;
 
         public ViewHolder(ViewholderBestSellerBinding binding) {
             super(binding.getRoot());
-            this.binding=binding;
+            this.binding = binding;
         }
     }
 }

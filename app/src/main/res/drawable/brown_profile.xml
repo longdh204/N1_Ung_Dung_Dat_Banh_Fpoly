@@ -2,8 +2,8 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape android:shape="rectangle">
-
-            <solid android:color="#AD7E3B" />
+            <!-- Màu nâu đậm và mạnh mẽ hơn -->
+            <solid android:color="#8B5A2B" /> <!-- Màu nâu sẫm đậm -->
             <corners android:radius="30dp" />
         </shape>
     </item>

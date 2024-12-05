@@ -1,5 +1,6 @@
 package com.example.dat_banh_fpoly.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -100,6 +101,13 @@ public class NewBookActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish(); return;
+            }
+        });
+        findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NewBookActivity.this, AdminMainActivity.class);
+                startActivity(intent);
             }
         });
     }
