@@ -65,14 +65,14 @@ public class BestSellerAdapter extends RecyclerView.Adapter<BestSellerAdapter.Vi
         });
 
         // Xử lý hiển thị nút xóa khi ở màn hình Favorite
-//        if (isFavorite) {
-//            holder.binding.deleteBtn.setVisibility(View.VISIBLE); // Hiển thị nút xóa khi là màn hình Favorite
-//            holder.binding.deleteBtn.setOnClickListener(v -> {
-//                removeItem(position); // Gọi phương thức xóa item
-//            });
-//        } else {
-//            holder.binding.deleteBtn.setVisibility(View.GONE); // Ẩn nút xóa khi không phải màn hình Favorite
-//        }
+        if (isFavorite) {
+            holder.binding.deleteBtn.setVisibility(View.VISIBLE); // Hiển thị nút xóa khi là màn hình Favorite
+            holder.binding.deleteBtn.setOnClickListener(v -> {
+                removeItem(position); // Gọi phương thức xóa item
+            });
+        } else {
+            holder.binding.deleteBtn.setVisibility(View.GONE); // Ẩn nút xóa khi không phải màn hình Favorite
+        }
     }
 
     @Override

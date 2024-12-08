@@ -4,118 +4,159 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp">
+    android:padding="16dp"
+    android:background="@drawable/book_list_item_back"
+    android:layout_marginTop="20dp">
 
-    <!-- Product Image -->
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Product"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/black"
+        android:textColor="@color/white"/>
+
     <ImageView
         android:id="@+id/imgProduct"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:scaleType="centerCrop"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView17"
         tools:src="@drawable/ic_launcher_background" />
 
-    <!-- Product Title -->
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:layout_marginStart="16dp"
         android:textColor="#000"
-        app:layout_constraintStart_toEndOf="@id/imgProduct"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imgProduct"
+        app:layout_constraintTop_toTopOf="@id/imgProduct"
         tools:text="Product Title" />
 
-    <!-- Product Description -->
     <TextView
         android:id="@+id/tvDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:maxLines="2"
         android:textColor="#757575"
-        app:layout_constraintStart_toEndOf="@id/imgProduct"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="Description of the product" />
+        app:layout_constraintStart_toStartOf="@id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        tools:text="Description of the product which can be quite long and span multiple lines. This is to test the ellipsize feature." />
 
-    <!-- Product Price -->
     <TextView
         android:id="@+id/tvPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
+        android:layout_marginTop="8dp"
         android:textColor="#FF5722"
-        app:layout_constraintStart_toEndOf="@id/imgProduct"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/tvTitle"
         app:layout_constraintTop_toBottomOf="@id/tvDescription"
         tools:text="100,000 VND" />
 
-    <!-- Product Rating -->
-    <TextView
-        android:id="@+id/tvRating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:textColor="#757575"
-        app:layout_constraintStart_toEndOf="@id/imgProduct"
-        app:layout_constraintTop_toBottomOf="@id/tvPrice"
-        tools:text="Rating: 4.5" />
-
-    <!-- Product Sizes -->
-    <TextView
-        android:id="@+id/tvSize"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:textColor="#757575"
-        app:layout_constraintStart_toEndOf="@id/imgProduct"
-        app:layout_constraintTop_toBottomOf="@id/tvRating"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="Sizes: Small, Medium, Large" />
+        app:layout_constraintStart_toStartOf="@id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvPrice">
 
-    <!-- Seller Image -->
+        <TextView
+            android:id="@+id/tvRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:textColor="#757575"
+            android:textSize="14sp"
+            tools:text="Rating: 4.5"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tvSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#757575"
+            android:textSize="14sp"
+            tools:text="Sizes: S, M, L"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Seller"
+        android:textSize="25sp"
+        android:textStyle="bold"        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:layout_editor_absoluteX="16dp"
+        android:layout_marginTop="20sp"
+        android:background="@color/black"
+        android:textColor="@color/white"/>
+
     <ImageView
         android:id="@+id/imgSeller"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imgProduct"
+        app:layout_constraintTop_toBottomOf="@+id/textView18"
         tools:src="@drawable/ic_launcher_foreground" />
 
-    <!-- Seller Name -->
     <TextView
         android:id="@+id/tvSellerName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
+        android:layout_marginStart="16dp"
         android:textColor="#000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/imgSeller"
         app:layout_constraintTop_toTopOf="@id/imgSeller"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:text="Seller: John Doe" />
+        tools:text="Seller: John Doe"
+        android:textStyle="bold"/>
 
-    <!-- Seller Phone -->
     <TextView
         android:id="@+id/tvSellerPhone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="12sp"
         android:textColor="#757575"
-        app:layout_constraintStart_toEndOf="@id/imgSeller"
-        app:layout_constraintTop_toBottomOf="@id/tvSellerName"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="Phone: 0123456789" />
+        app:layout_constraintStart_toStartOf="@id/tvSellerName"
+        app:layout_constraintTop_toBottomOf="@id/tvSellerName"
+        tools:text="Phone: 0123456789"
+        android:textStyle="bold"/>
 
-    <!-- Category ID -->
     <TextView
         android:id="@+id/tvCategoryId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="12sp"
+        android:layout_marginTop="8dp"
         android:textColor="#757575"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imgSeller"
         tools:text="Category: 1" />

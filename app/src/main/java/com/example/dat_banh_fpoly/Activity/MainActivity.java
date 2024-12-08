@@ -32,6 +32,9 @@ import java.util.List;
 public class MainActivity extends BaseActivity {
     private ActivityMainBinding binding;
     private MainViewModel viewModel = new MainViewModel();
+    // Khởi tạo danh sách items
+    List<IteamsModel> items = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +54,7 @@ public class MainActivity extends BaseActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         View decor = window.getDecorView();
         decor.setSystemUiVisibility(0);
-
+        binding.recyclerBestSeller.setAdapter(new BestSellerAdapter(items, false)); // Màn hình Main, ẩn nút xóa
         binding.TimKiem.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -156,11 +159,9 @@ public class MainActivity extends BaseActivity {
         binding.viewPager2.setClipChildren(false);
         binding.viewPager2.setOffscreenPageLimit(3);
         binding.viewPager2.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
-
         CompositePageTransformer transformer = new CompositePageTransformer();
         transformer.addTransformer(new MarginPageTransformer(0));
         binding.viewPager2.setPageTransformer(transformer);
-
         if (images.size() > 1) {
             binding.dotIndicator.setVisibility(View.VISIBLE);
             binding.dotIndicator.attachTo(binding.viewPager2);

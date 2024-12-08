@@ -85,7 +85,22 @@ public class CardActivity extends BaseActivity {
     }
 
     private void setVariable() {
-        binding.backBtn.setOnClickListener(view -> startActivity(new Intent(CardActivity.this, MainActivity.class)));
+        binding.backBtn.setOnClickListener(view -> {
+            // Kiểm tra tài khoản đang sử dụng
+            String currentUserEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+
+            // Nếu tài khoản là admin, quay về màn hình Admin
+            if ("admin123@gmail.com".equals(currentUserEmail)) {
+                Intent intent = new Intent(CardActivity.this, AdminMainActivity.class); // Màn hình Admin
+                startActivity(intent);
+            } else {
+                // Nếu không phải admin, quay về màn hình chính
+                Intent intent = new Intent(CardActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+
+            finish(); // Đảm bảo quay lại đúng màn hình mà không lưu lại trong back stack
+        });
 
         binding.payButton.setOnClickListener(view -> {
             // Hiển thị tổng giá tiền và xác nhận thanh toán

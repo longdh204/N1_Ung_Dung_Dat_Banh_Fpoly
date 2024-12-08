@@ -47,8 +47,17 @@ public class OrderHistoryActivity extends AppCompatActivity {
 
         // Xử lý nút "Back to Main"
         findViewById(R.id.backhistory).setOnClickListener(v -> {
-            Intent intent = new Intent(OrderHistoryActivity.this, MainActivity.class);
-            startActivity(intent);
+            // Kiểm tra tài khoản đang sử dụng
+            String currentUserEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+            if ("admin123@gmail.com".equals(currentUserEmail)) {
+                // Nếu là admin, quay lại màn hình Admin
+                Intent intent = new Intent(OrderHistoryActivity.this, AdminMainActivity.class); // Thay AdminMainActivity bằng Activity Admin của bạn
+                startActivity(intent);
+            } else {
+                // Nếu không phải admin, quay lại màn hình chính
+                Intent intent = new Intent(OrderHistoryActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
             finish();
         });
     }

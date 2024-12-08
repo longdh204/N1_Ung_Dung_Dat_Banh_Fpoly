@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.dat_banh_fpoly.Login.Login;
 import com.example.dat_banh_fpoly.databinding.ActivityIntroBinding;
 
 public class IntroActivity extends BaseActivity {
@@ -22,7 +23,7 @@ private ActivityIntroBinding binding;
         binding.startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(IntroActivity.this, MainActivity.class);
+                Intent intent = new Intent(IntroActivity.this, Login.class);
                 startActivity(intent); // Chuyển đến MainActivity
             }
         });

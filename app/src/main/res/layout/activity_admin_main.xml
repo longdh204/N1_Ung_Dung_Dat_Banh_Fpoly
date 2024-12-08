@@ -158,25 +158,34 @@
                 android:orientation="horizontal">
 
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/buttonAddProduct"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Them" />
-                <Button
-                    android:id="@+id/button3"
+                    android:text="Add"
+                    android:background="@color/brown"
+                    android:textColor="@color/white"
+                    android:layout_margin="10sp"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buttonUpdate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Button" />
+                    android:text="Update"
+                    android:background="@color/brown"
+                    android:textColor="@color/white"
+                    android:layout_margin="10sp"/>
 
-                <Button
-                    android:id="@+id/button4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
+<!--                <androidx.appcompat.widget.AppCompatButton-->
+<!--                    android:id="@+id/buttonDelete"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:text="Delete"-->
+<!--                    android:background="@color/brown"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:layout_margin="10sp"/>-->
             </LinearLayout>
 
             <LinearLayout

@@ -71,6 +71,20 @@ public class AdminMainActivity extends BaseActivity {
             Intent intent = new Intent(AdminMainActivity.this, NewBookActivity.class);
             startActivity(intent);
         });
+        binding.buttonUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AdminMainActivity.this, BookListActivity.class);
+                startActivity(intent);
+            }
+        });
+//        binding.buttonDelete.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(AdminMainActivity.this,BookListActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
     private void searchItemsByName(String query) {
